@@ -6,21 +6,21 @@ from termcolor import colored
 from api import send_from_node_wallet, WalletLockedError, unlock_wallet, get_mining_address, get_wallet_balance, \
     get_node_wallet_balance
 
-MAX_ERG_PER_TX = 3000 # may go up to 5000
+MAX_ERG_PER_TX = 6749.999 # Best to do multiple of block reward ex: 67.5 per block, enter: 6749.999 ERG ( 0.001 fee )
 
-print(colored("Enter node ip:", "light_magenta"))
+print(colored("Enter node url ( ex http://localhost:9052 ):", "green"))
 node_address = input()
 
 if node_address[-1:] == '/':
     node_address = node_address[:-1]
 
-print(colored("Enter node api key:", "light_magenta"))
+print(colored("Enter node api key:", "green"))
 api_key = input()
 
-print(colored("Enter node wallet password (if pw is empty just hit enter) :", "light_magenta"))
+print(colored("Enter node wallet password (if pw is empty just hit enter) :", "green"))
 password = input()
 
-print(colored("Enter recipient address:", "light_magenta"))
+print(colored("Enter recipient address:", "red"))
 recipient = input()
 
 print(colored(f"node address: {node_address}", "red"))
@@ -39,11 +39,11 @@ mining_address = get_mining_address(node_address, api_key)
 balance = get_wallet_balance(mining_address)
 node_balance = get_node_wallet_balance(node_address, api_key)
 
-print(colored(f"Mining Address is: {mining_address}", "light_magenta"))
+print(colored(f"Mining Address is: {mining_address}", "green"))
 
-print(colored(f"Mining Address Balance: {balance * Decimal('1e-9')} ERG", "light_magenta"))
+print(colored(f"Mining Address Balance: {balance * Decimal('1e-9')} ERG", "green"))
 
-print(colored(f"Node Balance: {node_balance * Decimal('1e-9')} ERG", "light_magenta"))
+print(colored(f"Node Balance: {node_balance * Decimal('1e-9')} ERG", "green"))
 
 print(colored("Enter amount of ERG to transfer (hit enter for all mining balance):", "red"))
 
@@ -54,7 +54,7 @@ if amount_to_send != 0:
         if float(amount_to_send) < 1:
             res = send_from_node_wallet(node_address, api_key, recipient,
                                         int((Decimal(amount_to_send) * Decimal('1e9'))))
-            print(colored(f"tx hash: {res}", "light_magenta"))
+            print(colored(f"tx hash: {res}", "green"))
             quit(0)
     except Exception as e:
         print(e)
@@ -82,10 +82,10 @@ for x in range(times_to_run):
         try:
             if amount_to_send < int(MAX_ERG_PER_TX * math.pow(10, 9)):
                 res = send_from_node_wallet(node_address, api_key, recipient, int(amount_to_send))
-                print(colored(f"tx hash: {res}", "light_magenta"))
+                print(colored(f"tx hash: {res}", "green"))
                 quit(0)
             res = send_from_node_wallet(node_address, api_key, recipient, int(MAX_ERG_PER_TX * math.pow(10, 9)))
-            print(colored(f"tx hash: {res}", "light_magenta"))
+            print(colored(f"tx hash: {res}", "green"))
             break
         except WalletLockedError as e:
             print("wallet is locked attempting to unlock")
@@ -101,7 +101,7 @@ if remainder_ergs > 1000000:
     while True:
         try:
             res = send_from_node_wallet(node_address, api_key, recipient, int(remainder_ergs))
-            print(colored(f"tx hash: {res}", "light_magenta"))
+            print(colored(f"tx hash: {res}", "green"))
             quit(0)
         except WalletLockedError as e:
             print("wallet is locked attempting to unlock")
