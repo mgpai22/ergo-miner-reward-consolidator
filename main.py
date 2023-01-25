@@ -8,7 +8,7 @@ from api import send_from_node_wallet, WalletLockedError, unlock_wallet, get_min
 
 MAX_ERG_PER_TX = 6749.999 # Best to do multiple of block reward ex: 67.5 per block, enter: 6749.999 ERG ( 0.001 fee )
 
-print(colored("Enter node url ( ex http:\\localhost:9052 ):", "green"))
+print(colored("Enter node url ( ex http://localhost:9052 ):", "green"))
 node_address = input()
 
 if node_address[-1:] == '/':
