@@ -10,7 +10,8 @@ Send all mined funds to a recipient address via python terminal.
 - Follow instructions given in terminal
 
 ```bash
-git clone https://github.com/mgpai22/ergo-miner-reward-consolidator.git && cd ergo-miner-reward-consolidator
+mgpai repo ( original ): git clone https://github.com/mgpai22/ergo-miner-reward-consolidator.git && cd ergo-miner-reward-consolidator
+reqlez repo ( this repo ): git clone https://github.com/reqlez/ergo-miner-reward-consolidator.git && cd ergo-miner-reward-consolidator
 ```
 
 ```bash
