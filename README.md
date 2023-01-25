@@ -14,7 +14,7 @@ git clone https://github.com/mgpai22/ergo-miner-reward-consolidator.git && cd er
 ```
 
 ```bash
-pip3 install -r requirements
+pip3 install -r requirements.txt
 ```
 
 ```bash
