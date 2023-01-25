@@ -6,7 +6,7 @@ from termcolor import colored
 from api import send_from_node_wallet, WalletLockedError, unlock_wallet, get_mining_address, get_wallet_balance, \
     get_node_wallet_balance
 
-MAX_ERG_PER_TX = 5549.999 # Best to do multiple of block reward ex: 55.5 per block, enter: 5549.999 ERG ( 0.001 fee )
+MAX_ERG_PER_TX = 6749.999 # Best to do multiple of block reward ex: 67.5 per block, enter: 6749.999 ERG ( 0.001 fee )
 
 print(colored("Enter node url ( ex http:\\localhost:9052 ):", "green"))
 node_address = input()
